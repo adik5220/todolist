@@ -25,10 +25,9 @@ def index(request):
 
 		if "taskDelete" in request.POST:
 			checkedlist = request.POST["checkedbox"]
-			for todo_id in checkedlist:
-				todo = TodoList.objects.get(id=int(todo_id))
-				todo.delete()
-	return render(request, "index.html", {"todos": todos, "categories":categories, "message": 'ok'})
+			todo = TodoList.objects.get(id=int(checkedlist))
+			todo.delete()
+	return render(request, "index.html", {"todos": todos, "categories":categories})
 	
 def todoView(request):
 	return HttpResponse('Hello my friend')
