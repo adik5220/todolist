@@ -18,6 +18,7 @@ class TodoList(models.Model):
 	created = models.DateField(default=timezone.now(), null=True)
 	due_date = models.DateField(default=timezone.now()+timedelta(days=3), null=True)
 	category = models.ForeignKey(Category, on_delete=models.CASCADE, default="general")
+	picture = models.ImageField(upload_to='static/picture/', blank=True, default='static/picture/No_image_3x4.svg.png')
 
 	
 	def __str__(self):

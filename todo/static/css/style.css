@@ -60,6 +60,11 @@ h1 {
     position: relative;
     overflow: hidden;
 }
+.inputContainer.image {
+    height: 120px;
+    width: 60px;
+    background: black;
+}
 .inputContainer.last {
     border-bottom: 1px solid #e5e5e5;
     margin-bottom: 20px;
