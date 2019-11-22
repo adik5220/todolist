@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from django.utils import timezone
 import requests
 from django.core.files import File
+from django.views import generic
 
 def index(request):
 	todos = TodoList.objects.all()
@@ -33,6 +34,18 @@ def index(request):
 			todo.delete()
 	return render(request, "index.html", {"todos": todos, "categories":categories})
 	
+
+def all_todo(request):
+	alltodo = TodoList.objects.filter(published_date__lte=timezone.now()).order_by('bublished_date')
+	return render(request, 'catalog/each_todo.html', {'alltodos':alltodos})
+
+class det(generic.DetailView):
+	model=TodoList
+		
+
+def detail(request, id):
+	return render(request, 'catalog/detail.html', {'detail':detail})
+
 def todoView(request):
 	return HttpResponse('Hello my friend')
 # Create your views here.

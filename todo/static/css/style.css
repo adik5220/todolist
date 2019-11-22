@@ -12,6 +12,41 @@ body {
     background: #b1f6cb;
     font-family: 'Open Sans',sans-serif;
 }
+
+header {
+    text-align: justify;
+    letter-spacing: 1px;
+    height: 8em;
+    padding: 2em 10%;
+    background: #2c3e50
+    color: #fff;
+}
+
+header h1,
+header nav {
+    display: inline-block;
+}
+
+header::after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+}
+
+header h1 {
+    height: 100%;
+}
+
+header h1::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+header nav a {
+    padding-right: 15px;
+}
 /* super basic grid structure */
 .container {
     width: 600px;
@@ -178,6 +213,12 @@ button {
     list-style: none;
     padding: 0 20px;
 }
+.taskList.taskItem.imageBox {
+    width: 10%;
+    height: 10%;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
 .taskItem {
     border-top: 1px solid #e5e5e5;
     padding: 15px 0;
@@ -185,6 +226,7 @@ button {
     font-weight: 600;
     font-size: 14px;
     letter-spacing: 0.5px;
+    width: 90%;
 }
 .taskList .taskItem:nth-child(even) {
     background: #fcfcfc;
