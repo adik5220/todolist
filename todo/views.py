@@ -25,7 +25,7 @@ def index(request):
 			content = title
 			Todo = TodoList(title=title, content=content, due_date=date, category=Category.objects.get(name=category), picture=photo)
 			Todo.save()
-			return redirect("/")
+			return redirect("/todo/")
 
 		if "taskDelete" in request.POST:
 			
@@ -35,17 +35,10 @@ def index(request):
 	return render(request, "index.html", {"todos": todos, "categories":categories})
 	
 
-def all_todo(request):
-	alltodo = TodoList.objects.filter(published_date__lte=timezone.now()).order_by('bublished_date')
-	return render(request, 'catalog/each_todo.html', {'alltodos':alltodos})
+
+class all(generic.ListView):
+	model=TodoList
 
 class det(generic.DetailView):
 	model=TodoList
-		
-
-def detail(request, id):
-	return render(request, 'catalog/detail.html', {'detail':detail})
-
-def todoView(request):
-	return HttpResponse('Hello my friend')
 # Create your views here.

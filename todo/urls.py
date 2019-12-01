@@ -5,7 +5,7 @@ from todo.views import index
 from . import views
 
 urlpatterns = [
-    path('', index, name="index"),
-    #url(r'^todos/$', views.all_todo, name='all_todo'),
+    path('todo/', index, name="index"),
+    path('todo/all/', views.all.as_view(), name='all'),
 	path('todo/<int:pk>/', views.det.as_view(), name='det')
 ]

@@ -10,11 +10,12 @@
     	<style type="text/css">"the stylesheet"</style>
     <header>
 		<h1>Тудушка</h1>
-		<nav><a href="">Главная</a><a href="">Все задания</a><a href="">Контакты</a></nav>
+		<nav><a href="{% url 'index' %}">Главная</a><a href="{% url 'all' %}">Все задания</a><a href="">Контакты</a></nav>
 	</header>
 </head>
 <body>
 	{% block content %}
+	
 	{% endblock %}
 </body>
 </html>

@@ -22,7 +22,7 @@ class TodoList(models.Model):
 	picture = models.ImageField(upload_to='static/picture/', blank=True, default='static/picture/No_image_3x4.svg.png')
 
 	def get_absolute_url(self):
-		return reverse('each_todo', args=[int(self.id)])
+		return reverse('det', args=[int(self.id)])
 
 	def __str__(self):
 		return self.title
