@@ -126,6 +126,13 @@ input[type="date"], input[type="text"], select {
     -webkit-transition: background 0.3s;
             transition: background 0.3s;
 }
+
+.usernamearea {
+    height: 100px;
+    width: 20px;
+    position: none;
+}
+
 input[type="date"] {
     cursor: pointer;
 }
