@@ -353,3 +353,8 @@ footer a {
     font-size: 18pt;
 
 }
+
+h3.cont {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}

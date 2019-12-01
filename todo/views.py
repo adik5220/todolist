@@ -33,8 +33,9 @@ def index(request):
 			todo = TodoList.objects.get(id=int(checkedlist))
 			todo.delete()
 	return render(request, "index.html", {"todos": todos, "categories":categories})
-	
 
+def contact(request):
+	return render(request, 'todo/contact.html')
 
 class all(generic.ListView):
 	model=TodoList

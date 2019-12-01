@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     path('todo/', index, name="index"),
+    path('todo/contact/', views.contact, name="contact"),
     path('todo/all/', views.all.as_view(), name='all'),
 	path('todo/<int:pk>/', views.det.as_view(), name='det')
 ]
