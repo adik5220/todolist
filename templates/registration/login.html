@@ -1,40 +1,39 @@
-
+{% extends "head.html" %}
 {% block content %}
 
-<div class="content">
+<div class="container">
 {% if form.errors %}
-  <p>Your username and password didn't match. Please try again.</p>
+  <p>Ваш пароль или логин не совпадают. Пожалуйста повторите снова</p>
 {% endif %}
 
 {% if next %}
   {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
+    <p>Ваш аккаунт не имеет доступ к этой странице. Чтобы продолжить войдите под другим аккаунтом</p>
   {% else %}
-    <p>Please login to see this page.</p>
+    <p>Пожалуйста авторизутесь чтобы посмотреть страницу</p>
   {% endif %}
 {% endif %}
 
-<form method="post" action="{% url 'login' %}">
+<form class="log_form" method="post" action="{% url 'login' %}">
 {% csrf_token %}
-<table>
+  <table class="userlogin">
 
-<tr>
-  <td>{{ form.username.label_tag }}</td>
-  <td class="usernamearea">{{ form.username }}</td>
-</tr>
+  <tr class="username_log">
+    <td>{{ form.username.label_tag }}</td>
+    <td class="usernamearea">{{ form.username }}</td>
+  </tr>
 
-<tr>
-  <td>{{ form.password.label_tag }}</td>
-  <td>{{ form.password }}</td>
-</tr>
-</table>
+  <tr class="username_pass">
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+  </tr>
+  </table>
 
 <input type="submit" value="login" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
 {# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+<p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
 </div>
 {% endblock %}

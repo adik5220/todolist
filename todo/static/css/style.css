@@ -348,12 +348,14 @@ footer a {
     color: #777;
     pointer-events: none;
 }
+
 .taskCategory option {
     background: #fff;
     border: none;
     outline: none;
     padding: 0 100px;
 }
+
 .detailBox h1 {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -361,7 +363,22 @@ footer a {
 
 }
 
-h3.cont {
-    padding-bottom: 10px;
-    padding-top: 10px;
+.userlogin tr td {
+    width: 120px;
+    height: 80px;
+    border: 4px solid black;
+}
+
+.userlogin input[type="text"], select {
+    width: 120px;
+    height: 80px;
+    position: inherit;
+    border: 1px solid black;
+}
+
+.log_form .userlogin {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    width: 450px;
 }

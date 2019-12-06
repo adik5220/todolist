@@ -3,7 +3,7 @@ from django.contrib import admin
 from . import models
 
 class TodoListAdmin(admin.ModelAdmin):
-	list_display = ("title",  "created", "due_date", "picture")
+	list_display = ("title", "polzovatel", "created", "due_date", "picture", "id")
 class CategoryAdmin(admin.ModelAdmin):
 	list_display = ("name",)
 

@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from datetime import datetime, timedelta
 from django.urls import reverse
+from django.contrib.auth.models import User
+from datetime import date
 
 class Category(models.Model):
 	name = models.CharField(default="general", max_length=100)
@@ -20,6 +22,7 @@ class TodoList(models.Model):
 	due_date = models.DateField(default=timezone.now()+timedelta(days=3), null=True)
 	category = models.ForeignKey(Category, on_delete=models.CASCADE, default="general")
 	picture = models.ImageField(upload_to='static/picture/', blank=True, default='static/picture/No_image_3x4.svg.png')
+	polzovatel = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
 	def get_absolute_url(self):
 		return reverse('det', args=[int(self.id)])

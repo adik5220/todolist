@@ -7,9 +7,12 @@ from django.utils import timezone
 import requests
 from django.core.files import File
 from django.views import generic
+from django.contrib.auth.decorators import login_required
+
+@login_required
 
 def index(request):
-	todos = TodoList.objects.all()
+	todos = TodoList.objects.filter(polzovatel=request.user)
 	categories = Category.objects.all()
 	if request.method == "POST":
 
@@ -18,12 +21,15 @@ def index(request):
 			date = str(request.POST["date"])
 			category = request.POST["category_select"]
 			photo = request.POST["image"]
+
 			if category == '':
 				category = Category.objects.last()
 			if date == '':
 				date = timezone.now()+timedelta(days=3)
 			content = title
 			Todo = TodoList(title=title, content=content, due_date=date, category=Category.objects.get(name=category), picture=photo)
+			if request.user.is_authenticated:
+				Todo.polzovatel = request.user
 			Todo.save()
 			return redirect("/todo/")
 
