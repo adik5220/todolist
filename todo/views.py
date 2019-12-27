@@ -14,6 +14,10 @@ from django.contrib.auth.decorators import login_required
 def index(request):
 	todos = TodoList.objects.filter(polzovatel=request.user)
 	categories = Category.objects.all()
+	
+	return render(request, "index.html", {"todos": todos, "categories": categories})
+
+def adding(request):
 	if request.method == "POST":
 
 		if "taskAdd" in request.POST:
@@ -27,18 +31,23 @@ def index(request):
 			if date == '':
 				date = timezone.now()+timedelta(days=3)
 			content = title
+
 			Todo = TodoList(title=title, content=content, due_date=date, category=Category.objects.get(name=category), picture=photo)
+			
 			if request.user.is_authenticated:
 				Todo.polzovatel = request.user
 			Todo.save()
-			return redirect("/todo/")
+		return render(request)			
+
+def deleting(request):
 
 		if "taskDelete" in request.POST:
 			
 			checkedlist = request.POST["checkedbox"]
 			todo = TodoList.objects.get(id=int(checkedlist))
 			todo.delete()
-	return render(request, "index.html", {"todos": todos, "categories":categories})
+		
+		return render(request)
 
 def contact(request):
 	return render(request, 'todo/contact.html')
